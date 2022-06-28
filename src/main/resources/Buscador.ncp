@@ -1,0 +1,327 @@
+<Project>
+  <Name>buscador</Name>
+  <ProjectItem type="NClass.DiagramEditor.ClassDiagram.ClassDiagram" assembly="NClass.DiagramEditor, Version=2.8.0.2, Culture=neutral, PublicKeyToken=null">
+    <Name>Sin titulo</Name>
+    <Language>Java</Language>
+    <Entities>
+      <Entity type="Package">
+        <Name>model</Name>
+        <Location left="10" top="10" />
+        <Size width="1650" height="1174" />
+      </Entity>
+      <Entity type="Class">
+        <Name>RowWords</Name>
+        <Access>Public</Access>
+        <Location left="38" top="85" />
+        <Size width="259" height="148" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private HashMap&lt;String, List&lt;Integer&gt;&gt; words</Member>
+        <Member type="Method">public void addWord(String word, int position)</Member>
+        <Member type="Method">public HashMap&lt;String, List&lt;Integer&gt;&gt; getWords()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Row</Name>
+        <Access>Public</Access>
+        <Location left="373" top="85" />
+        <Size width="322" height="213" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private File file</Member>
+        <Member type="Field">private RowWords words</Member>
+        <Member type="Field">private FinderConfiguration config</Member>
+        <Member type="Method">public RowWords getWords()</Member>
+        <Member type="Method">public void searchWords()</Member>
+        <Member type="Method">public File getFile()</Member>
+        <Member type="Constructor">public Row(File file, String rawRow, FindeConfiguration config)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>File</Name>
+        <Access>Public</Access>
+        <Location left="853" top="122" />
+        <Size width="387" height="247" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private Folder folder</Member>
+        <Member type="Field">private List&lt;Row&gt; rows</Member>
+        <Member type="Field">private FinderConfiguration config</Member>
+        <Member type="Field">private Iterator&lt;String&gt; rowIterator</Member>
+        <Member type="Method">public List&lt;Row&gt; getRows()</Member>
+        <Member type="Method">public Folder getFolder()</Member>
+        <Member type="Method">public String getFileName()</Member>
+        <Member type="Method">public void searchRows()</Member>
+        <Member type="Constructor">public File(Folder folder, String fileName, FinderConfiguration config)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Folder</Name>
+        <Access>Public</Access>
+        <Location left="960" top="441" />
+        <Size width="217" height="179" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private List&lt;File&gt; files</Member>
+        <Member type="Field">private String folder</Member>
+        <Member type="Method">public String getFolder()</Member>
+        <Member type="Method">public List&lt;File&gt; getFiles()</Member>
+        <Member type="Constructor">public Folder(String folderName)</Member>
+        <Member type="Method">public void searchFiles()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>FileWordsOmmited</Name>
+        <Access>Public</Access>
+        <Location left="807" top="640" />
+        <Size width="234" height="128" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private List&lt;String&gt; words</Member>
+        <Member type="Field">private BufferedReader br</Member>
+        <Member type="Constructor">public FileWordsOmmited(BufferedReader br)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Interface">
+        <Name>WordsOmmited</Name>
+        <Access>Public</Access>
+        <Location left="610" top="822" />
+        <Size width="184" height="139" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">bool isOmmited(String word)</Member>
+      </Entity>
+      <Entity type="Class">
+        <Name>ArrayWordsOmmited</Name>
+        <Access>Public</Access>
+        <Location left="990" top="796" />
+        <Size width="268" height="137" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private List&lt;String&gt; words</Member>
+        <Member type="Constructor">public ArrayWordsOmmited(ArrayList&lt;String&gt; words)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>WordOcurrences</Name>
+        <Access>Public</Access>
+        <Location left="39" top="860" />
+        <Size width="258" height="165" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private String file</Member>
+        <Member type="Field">private int occurrences</Member>
+        <Member type="Constructor">public WordOcurrences(File file, int occurrences)</Member>
+        <Member type="Method">public String getFile()</Member>
+        <Member type="Method">public int getOccurrences()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>FileIndex</Name>
+        <Access>Public</Access>
+        <Location left="356" top="796" />
+        <Size width="208" height="122" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">public void load()</Member>
+        <Member type="Method">public void save()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>MemoryIndex</Name>
+        <Access>Public</Access>
+        <Location left="402" top="496" />
+        <Size width="339" height="177" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private WordOccurrenceList occurrences</Member>
+        <Member type="Method">public void build()</Member>
+        <Member type="Method">public List&lt;WordOcurrences&gt; findWord(String word)</Member>
+        <Member type="Constructor">public MemoryIndex(Folder folder, WordsOmmited wordsOmmited)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>FileRowIterator</Name>
+        <Access>Public</Access>
+        <Location left="39" top="256" />
+        <Size width="222" height="162" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private BufferedReader br</Member>
+        <Member type="Method">public boolean hasNext()</Member>
+        <Member type="Method">public String next()</Member>
+        <Member type="Constructor">public FileRowIterator(BufferedReader br)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>ArrayRowIterator</Name>
+        <Access>Public</Access>
+        <Location left="39" top="446" />
+        <Size width="222" height="154" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private List&lt;String&gt; rows</Member>
+        <Member type="Constructor">public ArrayRowIterator(List&lt;String&gt; rows)</Member>
+        <Member type="Method">public String hasNext()</Member>
+        <Member type="Method">public String next()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Interface">
+        <Name>Iterator</Name>
+        <Access>Public</Access>
+        <Location left="501" top="333" />
+        <Size width="162" height="141" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">String next()</Member>
+        <Member type="Method">boolean hasNext()</Member>
+      </Entity>
+      <Entity type="Class">
+        <Name>BaseWordsOmmited</Name>
+        <Access>Public</Access>
+        <Location left="1267" top="505" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">public boolean isOmmited(String word)</Member>
+        <Member type="Method">protected List&lt;String&gt; getWords()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>WordOccurrenceList</Name>
+        <Access>Public</Access>
+        <Location left="39" top="650" />
+        <Size width="258" height="152" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private Map&lt;String, List&lt;WordOccurrences&gt;&gt; words</Member>
+        <Member type="Method">public List&lt;WordOccurrences&gt; search(String word)</Member>
+        <Member type="Method">public void Add(String word, String file)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>FinderConfiguration</Name>
+        <Access>Public</Access>
+        <Location left="1329" top="122" />
+        <Size width="264" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">public Iterator&lt;String&gt; getRowIterator(java.io.File file)</Member>
+        <Member type="Method">public RowWords getRowWords()</Member>
+        <Member type="Method">public Iterator&lt;String&gt; getWordIterator(String row)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+    </Entities>
+    <Containers>
+      <Container entityIndex="0">
+        <ChildEntity>2</ChildEntity>
+        <ChildEntity>3</ChildEntity>
+        <ChildEntity>4</ChildEntity>
+        <ChildEntity>0</ChildEntity>
+        <ChildEntity>1</ChildEntity>
+        <ChildEntity>8</ChildEntity>
+        <ChildEntity>5</ChildEntity>
+        <ChildEntity>6</ChildEntity>
+        <ChildEntity>7</ChildEntity>
+        <ChildEntity>9</ChildEntity>
+        <ChildEntity>10</ChildEntity>
+        <ChildEntity>11</ChildEntity>
+        <ChildEntity>12</ChildEntity>
+        <ChildEntity>13</ChildEntity>
+        <ChildEntity>14</ChildEntity>
+        <ChildEntity>15</ChildEntity>
+        <ChildEntity>16</ChildEntity>
+      </Container>
+    </Containers>
+    <Relationships>
+      <Relationship type="Association" first="2" second="1">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Composition</AssociationType>
+        <EndRole>words</EndRole>
+        <EndMultiplicity>0..*</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="3" second="2">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>999</X>
+          <Y>91</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Composition</AssociationType>
+        <StartRole>file</StartRole>
+        <EndRole>rows</EndRole>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>0..*</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="4" second="3">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Composition</AssociationType>
+        <EndRole>files</EndRole>
+        <EndMultiplicity>0..*</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Realization" first="5" second="6">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>729</X>
+          <Y>797</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Realization" first="7" second="6">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+      </Relationship>
+      <Relationship type="Generalization" first="9" second="10">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Association" first="10" second="4">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Composition</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="10" second="6">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>650</X>
+          <Y>792</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Composition</AssociationType>
+      </Relationship>
+      <Relationship type="Realization" first="11" second="13">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+      </Relationship>
+      <Relationship type="Realization" first="12" second="13">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+      </Relationship>
+      <Relationship type="Association" first="3" second="13">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Composition</AssociationType>
+      </Relationship>
+      <Relationship type="Generalization" first="5" second="14">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+      </Relationship>
+      <Relationship type="Generalization" first="7" second="14">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+      </Relationship>
+      <Relationship type="Association" first="15" second="8">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Composition</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="10" second="15">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Composition</AssociationType>
+      </Relationship>
+    </Relationships>
+  </ProjectItem>
+</Project>
